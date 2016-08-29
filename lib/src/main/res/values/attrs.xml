@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BadgeContainer">
+        <attr name="badgeContainer_padding_left" format="dimension"/>
+        <attr name="badgeContainer_padding_bottom" format="dimension"/>
+        <attr name="badgeContainer_target_id" format="reference"/>
+        <attr name="badgeContainer_count" format="integer"/>
+        <attr name="badgeContainer_direction" format="enum">
+            <enum name="inner" value="0"/>
+            <enum name="outter" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
