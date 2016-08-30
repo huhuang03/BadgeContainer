@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
 
 android {
     compileSdkVersion 24
@@ -18,8 +21,23 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-annotations:24.2.0'
+    compile('com.android.support:support-annotations:24.2.0') {
+        transitive = true
+    }
 }
+
+ext {
+    bintrayGroup = "com.tonghu.base"
+    bintrayModule = "badgeContainer"
+    bintrayVersion = "1.0.0"
+    bintrayDesc = "An android badge view"    // option
+    vscUrl = "https://github.com/huhuang03/BadgeContainer"
+}
+
+
+apply from: '/Users/yi/source/config/bintray_maven.gradle'
+apply from: '/Users/yi/source/config/bintray_upload.gradle'

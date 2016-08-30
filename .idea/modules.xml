@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$USER_HOME$/Developer/source/BadgeContainer/BadgeContainer.iml" filepath="$USER_HOME$/Developer/source/BadgeContainer/BadgeContainer.iml" />
-      <module fileurl="file://$USER_HOME$/Developer/source/BadgeContainer/app/app.iml" filepath="$USER_HOME$/Developer/source/BadgeContainer/app/app.iml" />
       <module fileurl="file://$USER_HOME$/Developer/source/BadgeContainer/lib/lib.iml" filepath="$USER_HOME$/Developer/source/BadgeContainer/lib/lib.iml" />
       <module fileurl="file://$USER_HOME$/Developer/source/BadgeContainer/sample/sample.iml" filepath="$USER_HOME$/Developer/source/BadgeContainer/sample/sample.iml" />
     </modules>

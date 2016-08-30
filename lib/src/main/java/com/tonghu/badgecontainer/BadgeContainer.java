@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.Random;
 
 /**
@@ -28,6 +30,7 @@ public class BadgeContainer extends RelativeLayout {
      * 对于增长的部分, 是应该往外伸缩还是应该往里伸缩, 默认向里伸缩
      */
     @IntDef({DIRECTION_INNER, DIRECTION_OUTTER})
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Direction{}
 
     private @Direction int mDirection = DIRECTION_INNER;
@@ -168,7 +171,7 @@ public class BadgeContainer extends RelativeLayout {
     Random random = new Random();
     /**
      * 设置显示的徽章数量
-     * @param num <=0 表示不显示
+     * @param num less than 0 表示不显示
      */
     public void setNum(int num) {
         // for test different num ui
@@ -194,7 +197,7 @@ public class BadgeContainer extends RelativeLayout {
 
     /**
      * 设置显示的徽章数量
-     * @param num <=0 表示不显示
+     * @param num less than 0 表示不显示
      */
     public void setNum(String num) {
         int numInt = 0;

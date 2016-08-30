@@ -9,7 +9,6 @@
         <option name="modules">
           <set>
             <option value="$USER_HOME$/Developer/source/BadgeContainer" />
-            <option value="$USER_HOME$/Developer/source/BadgeContainer/app" />
             <option value="$USER_HOME$/Developer/source/BadgeContainer/lib" />
             <option value="$USER_HOME$/Developer/source/BadgeContainer/sample" />
           </set>
@@ -17,7 +16,6 @@
         <option name="myModules">
           <set>
             <option value="$USER_HOME$/Developer/source/BadgeContainer" />
-            <option value="$USER_HOME$/Developer/source/BadgeContainer/app" />
             <option value="$USER_HOME$/Developer/source/BadgeContainer/lib" />
             <option value="$USER_HOME$/Developer/source/BadgeContainer/sample" />
           </set>
