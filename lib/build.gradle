@@ -31,9 +31,9 @@ dependencies {
 }
 
 ext {
-    bintrayGroup = "com.tonghu.base"
+    bintrayGroup = "com.tonghu.view"
     bintrayModule = "badgeContainer"
-    bintrayVersion = "1.0.0"
+    bintrayVersion = "1.0.1"
     bintrayDesc = "An android badge view"    // option
     vscUrl = "https://github.com/huhuang03/BadgeContainer"
 }
