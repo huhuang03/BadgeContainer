@@ -169,6 +169,7 @@ public class BadgeContainer extends RelativeLayout {
     }
 
     Random random = new Random();
+
     /**
      * 设置显示的徽章数量
      * @param num less than 0 表示不显示
@@ -217,4 +218,5 @@ public class BadgeContainer extends RelativeLayout {
     private int dip2Px(float dip) {
         return (int) (dip * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
+
 }
