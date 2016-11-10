@@ -1,3 +1,4 @@
+## Introduce
 BadgeContainer is a RelativeLayout which can show a badge view on a child view or a child's child view
 
 ![samle](https://raw.githubusercontent.com/huhuang03/badgeContainer/master/img/sample1.png)
