@@ -26,18 +26,20 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile('com.android.support:support-annotations:24.2.0') {
+
         transitive = true
     }
 }
 
 ext {
-    bintrayGroup = "com.tonghu.view"
-    bintrayModule = "badgeContainer"
-    bintrayVersion = "1.0.1"
-    bintrayDesc = "An android badge view"    // option
-    vscUrl = "https://github.com/huhuang03/BadgeContainer"
+    group = "com.tonghu.view"
+    module = "badgeContainer"
+    version = "1.0.2"
+    desc = "An android badge view"    // option
+    url = "https://github.com/huhuang03/BadgeContainer"
 }
 
 
-apply from: '/Users/yi/source/config/bintray_maven.gradle'
-apply from: '/Users/yi/source/config/bintray_upload.gradle'
+apply from: '/Users/yi/source/up-bintray-lib-config/config.gradle'
+
+

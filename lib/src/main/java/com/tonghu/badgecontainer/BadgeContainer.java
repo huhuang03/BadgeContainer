@@ -3,6 +3,8 @@ package com.tonghu.badgecontainer;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.IntDef;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -12,16 +14,25 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.util.Random;
-
 /**
- * Created by york on 8/29/16.
+ * Usage:
+ * <BadgeContainer>
+ *     <View
+ *     the view to have badge
+ *     >
+ * </BadgeContainer>
+ *
+ *  only can have a child
+ *  layout must be warp_content
+ *
+ *  custom attribute:
+ *      2. badgeContainer_padding_left: x offset to left
+ *      3. badgeContainer_padding_bottom:  y offset to bottom
+ *
+ *
+ * Created by york on 5/16/16.
  */
 public class BadgeContainer extends RelativeLayout {
-    private static final String TAG = "BadgeContainer";
-    private static final boolean IS_DEBUG = false;
 
     public static final int DIRECTION_INNER = 0;
     public static final int DIRECTION_OUTTER = 1;
@@ -30,7 +41,6 @@ public class BadgeContainer extends RelativeLayout {
      * 对于增长的部分, 是应该往外伸缩还是应该往里伸缩, 默认向里伸缩
      */
     @IntDef({DIRECTION_INNER, DIRECTION_OUTTER})
-    @Retention(RetentionPolicy.SOURCE)
     public @interface Direction{}
 
     private @Direction int mDirection = DIRECTION_INNER;
@@ -43,6 +53,8 @@ public class BadgeContainer extends RelativeLayout {
     private int mPaddingBottom = 0;
     private int mTargetId = 0;
     private View mTargetView;
+
+    private Drawable mDotBg;
 
     public BadgeContainer(Context context) {
         this(context, null);
@@ -80,17 +92,33 @@ public class BadgeContainer extends RelativeLayout {
             if (paddingBottom > 0) {
                 mPaddingBottom = paddingBottom;
             }
+            Drawable tmpDotBg = a.getDrawable(R.styleable.BadgeContainer_badgeContainer_badge_bg);
+            if (tmpDotBg != null) {
+                mDotBg = tmpDotBg;
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    mDotBg = getResources().getDrawable(R.drawable.bg_badge_container_dot, getContext().getTheme());
+                } else {
+                    mDotBg = getResources().getDrawable(R.drawable.bg_badge_container_dot);
+                }
+            }
         } finally {
             a.recycle();
         }
 
         addView(createBadgeView());
 
-        if (IS_DEBUG) {
-            setBackgroundColor(Color.parseColor("#eeeeeeee"));
-        }
         setNum(count);
     }
+
+    /**
+     * set the target view which will show the badge on it
+     * @param view the view to show badge
+     */
+    public void setTargetView(View view) {
+        mTargetView = view;
+    }
+
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
@@ -117,10 +145,6 @@ public class BadgeContainer extends RelativeLayout {
             }
         }
         return null;
-    }
-
-    public void setTargetView(View view) {
-        mTargetView = view;
     }
 
     @Override
@@ -153,6 +177,7 @@ public class BadgeContainer extends RelativeLayout {
     }
 
     private View createBadgeView() {
+        int radius = dip2Px(8);
         int padding = dip2Px(4);
 
         mBadgeView = new TextView(getContext());
@@ -164,26 +189,19 @@ public class BadgeContainer extends RelativeLayout {
         return mBadgeView;
     }
 
-    public void setBackground(View badgeView) {
-        badgeView.setBackgroundResource(R.drawable.th_bg_badge_container);
+    private void setBackground(View badgeView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            badgeView.setBackground(mDotBg);
+        } else {
+            badgeView.setBackgroundDrawable(mDotBg);
+        }
     }
-
-    Random random = new Random();
 
     /**
      * 设置显示的徽章数量
-     * @param num less than 0 表示不显示
+     * @param num <=0 表示不显示
      */
     public void setNum(int num) {
-        // for test different num ui
-//        int i = random.nextInt(3);
-//        if (i == 0) {
-//            num = 8;
-//        } else if (i == 1) {
-//            num = 88;
-//        } else {
-//            num = 100;
-//        }
         if (num <= 0) {
             mBadgeView.setVisibility(View.GONE);
         } else {
@@ -198,7 +216,7 @@ public class BadgeContainer extends RelativeLayout {
 
     /**
      * 设置显示的徽章数量
-     * @param num less than 0 表示不显示
+     * @param num <=0 表示不显示
      */
     public void setNum(String num) {
         int numInt = 0;
@@ -218,5 +236,4 @@ public class BadgeContainer extends RelativeLayout {
     private int dip2Px(float dip) {
         return (int) (dip * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
-
 }

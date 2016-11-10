@@ -9,5 +9,6 @@
             <enum name="inner" value="0"/>
             <enum name="outter" value="1"/>
         </attr>
+        <attr name="badgeContainer_badge_bg" format="reference"/>
     </declare-styleable>
 </resources>
