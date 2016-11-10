@@ -34,3 +34,6 @@ use `app:badgeContainer_target_id` to specify the child view
 * badgeContainer_padding_bottom: y offsert to bottom
 * badgeContainer_direction: offset to outter or inner
 * badgeContainer_badge_bg: the red dot's background
+
+## gradle
+`comple com.tonghu.view:badgeContainer:1.03`

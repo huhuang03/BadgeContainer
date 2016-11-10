@@ -15,21 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
- * Usage:
- * <BadgeContainer>
- *     <View
- *     the view to have badge
- *     >
- * </BadgeContainer>
- *
- *  only can have a child
- *  layout must be warp_content
- *
- *  custom attribute:
- *      2. badgeContainer_padding_left: x offset to left
- *      3. badgeContainer_padding_bottom:  y offset to bottom
- *
- *
  * Created by york on 5/16/16.
  */
 public class BadgeContainer extends RelativeLayout {
@@ -45,7 +30,7 @@ public class BadgeContainer extends RelativeLayout {
 
     private @Direction int mDirection = DIRECTION_INNER;
 
-    private int mDefaultPaddingLeft = 4;    // dp
+private int mDefaultPaddingLeft = 4;    // dp
     private int mDefaultPaddingBottom = 5;  // dp
 
     private TextView mBadgeView;
@@ -199,7 +184,7 @@ public class BadgeContainer extends RelativeLayout {
 
     /**
      * 设置显示的徽章数量
-     * @param num <=0 表示不显示
+     * @param num less then 0 表示不显示
      */
     public void setNum(int num) {
         if (num <= 0) {
@@ -216,7 +201,7 @@ public class BadgeContainer extends RelativeLayout {
 
     /**
      * 设置显示的徽章数量
-     * @param num <=0 表示不显示
+     * @param num less then 0 表示不显示
      */
     public void setNum(String num) {
         int numInt = 0;
